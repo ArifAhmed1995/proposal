@@ -2,15 +2,11 @@
 
 ### About Me :
 ##### Contact Information :
-Name : Arif Ahmed
-
-University : [Birla Institute of Technology and Science, Pilani](http://www.bits-pilani.ac.in/)
-
-email-id : arif.ahmed.5.10.1995@gmail.com
-
-github username : [ArifAhmed1995](https://github.com/ArifAhmed1995)
-
-Time-Zone : UTC + 5:30
+**Name** : Arif Ahmed
+**University** : [Birla Institute of Technology and Science, Pilani](http://www.bits-pilani.ac.in/)
+**Email-Id** : arif.ahmed.5.10.1995@gmail.com
+**GitHub username** : [ArifAhmed1995](https://github.com/ArifAhmed1995)
+**Time-Zone** : UTC + 5:30
 ##### Personal Information :
 My name is Arif Ahmed, a second year undergraduate student at BITS Pilani Goa Campus,India. Currently I am pursuing a degree in Mathematics and Computer Science.
 
