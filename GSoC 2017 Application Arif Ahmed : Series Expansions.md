@@ -3,9 +3,13 @@
 ### About Me :
 ##### Contact Information :
 Name : Arif Ahmed
+
 University : [Birla Institute of Technology and Science, Pilani](http://www.bits-pilani.ac.in/)
+
 email-id : arif.ahmed.5.10.1995@gmail.com
+
 github username : [ArifAhmed1995](https://github.com/ArifAhmed1995)
+
 Time-Zone : UTC + 5:30
 ##### Personal Information :
 My name is Arif Ahmed, a second year undergraduate student at BITS Pilani Goa Campus,India. Currently I am pursuing a degree in Mathematics and Computer Science.
@@ -16,7 +20,7 @@ I like Python the best of all the languages mentioned because it's easier to wor
 
 Along with Mathematics courses such as Complex Analysis, Discrete Mathematics, Optimization, Introduction to Algebra, Real Analysis, etc I have also completed various online courses related to Computer Science and Programming.
 
-###### The online courses successfully completed are : 
+###### The online courses successfully completed are :
  - [Algorithms I - Princeton University](https://www.coursera.org/learn/algorithms-part1)
  - [Introduction to Interactive Programming in Python(Part I)](https://www.coursera.org/learn/interactive-python-1)
  - [Introduction to Interactive Programming in Python(Part II)](https://www.coursera.org/learn/interactive-python-2)
@@ -24,7 +28,7 @@ Along with Mathematics courses such as Complex Analysis, Discrete Mathematics, O
  - [Principles of Computing(Part II)](https://www.coursera.org/learn/principles-of-computing-2)
  - [First Five Courses of Data Science Specialization](https://www.coursera.org/specializations/jhu-data-science)
 
-### Contributions : 
+### Contributions :
 I stumbled upon SymPy while searching for Mathematics related projects on GitHub, sometime around 20th September 2016.I have attempted to fix issues and understand SymPy's codebase since then.Here is a list of my pull requests :
 
 ##### Merged:
