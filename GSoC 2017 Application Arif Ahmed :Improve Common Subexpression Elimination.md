@@ -1,4 +1,4 @@
-# Improving Series Expansions Module in SymPy
+# Improving Common Subexpression Elimination in SymPy
 
 ### About Me :
 ##### Contact Information :
