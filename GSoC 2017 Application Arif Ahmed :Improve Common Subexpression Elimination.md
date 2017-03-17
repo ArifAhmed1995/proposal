@@ -1,4 +1,4 @@
-#Improving Series Expansions Module in SymPy
+# Improving Series Expansions Module in SymPy
 
 ### About Me :
 ##### Contact Information :
@@ -38,7 +38,8 @@ One the best features I like about SymPy is it's capability to solve difficult i
 I stumbled upon SymPy while searching for Mathematics related projects on GitHub, sometime around 20th September 2016.I have attempted to fix issues and understand SymPy's codebase since then.Here is a list of my pull requests :
 
 ##### Merged:
- - [Geometric sum evaluates correctly for float base](https://github.com/sympy/sympy/pull/11682) **(Simple Fix)**
+ - [Geometric sum evaluates correctly for float base](https://github.com/sympy/sympy/pull/11682) **(Easy to Fix)**
+ - [ring series : rs_series extended for logarithm](https://github.com/sympy/sympy/pull/12274) **(Easy to Fix)**
  - [matrices : re and im works for matrices](https://github.com/sympy/sympy/pull/11696)
  - [core.evaluate : evaluate(False) works for numeric operators](https://github.com/sympy/sympy/pull/11714)
  - [evalf : Increase depth of symbolic evaluation for Abs()](https://github.com/sympy/sympy/pull/11970)
@@ -55,7 +56,6 @@ I stumbled upon SymPy while searching for Mathematics related projects on GitHub
  -  [solve : Solutions with spurious real/imaginary terms are discarded)](https://github.com/sympy/sympy/pull/11815)
  -  [Add contour plot function](https://github.com/sympy/sympy/pull/12049)
  -  [vector : Add Laplacian and Vector Laplacian support](https://github.com/sympy/sympy/pull/12261)
- -  [ring series : rs_series extended for logarithm](https://github.com/sympy/sympy/pull/12274)
 
-###Theory :
-A series
+### Theory :
+
