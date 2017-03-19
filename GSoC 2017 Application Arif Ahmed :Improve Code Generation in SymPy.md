@@ -101,11 +101,13 @@ Normally a implementation of CSE should yield :
 ([(x0, u**2), (x1, u*v), (x2, v**2)], [4*a*x0*x1 + 6*b*x0*x2 + q*x2**2 + x0**2*z + 4*w*x1*x2])
 ```
 The algorithm mentioned in the paper would yield a more optimized result : 
+
 ```
 >>> cse(P)
 ([(x0, u**2), (x1, 4*u)], [u*(u*z + a*x1)*x0 + v**2*(u*(x1*w + v*q) + 6*b*x0)])
 ```
 In some cases SymPy's existing CSE doesn't work at all : 
+
 ```
 >>> x = Symbol('x')
 >>> p = x - x**3 + x**5 - x**7
@@ -120,6 +122,7 @@ As per the algorithm we get a far more optimized result :
 >>> cse(p)
 ([(x0, x**2)], [x*(1 - x0*(1 - x0*(1-x0)))])
 ```
+
 ```
 Original:
 Multiplications -> 12
@@ -152,41 +155,42 @@ The important data structures to be used in this project are :
     A prime rectangle is one which is not covered by any other rectangle and thus yields more value than any rectangle it covers.
     
      A rectangle has the following parameters :
-     
-        - R - Number of rows
+
+ - R - Number of rows
  
-        - M(R_i) - Number of multiplications in row `i` corresponding to a certain kernel/co-kernel pair.
+ - M(R_i) - Number of multiplications in row `i` corresponding to a certain kernel/co-kernel pair.
 
-        - C - Number of Columns
+ - C - Number of Columns
 
-        - M(C_j) - Number of multiplications in Column `j`. This actually corresponds to no. of multiplications in a kernel cube
-          denoted by column `j`.
+ - M(C_j) - Number of multiplications in Column `j`. This actually corresponds to no. of multiplications in a kernel cube
+            denoted by column `j`.
 
-        Each element (i, j) represents a product term equal to the product
+    Each element (i, j) represents a product term equal to the product
         of co-kernel `i` and kernel cube `j`. This element requires a total
         number of M(R_i) + M(C_j) + 1 multiplications to be computed.
 
-        Therefore the total number of multiplications represented by the
+    Therefore the total number of multiplications represented by the
         whole rectangle is equal to :
 
         R*sum(M(C_j)) + C*sum(M(C_j)) + R * C
 
-        Each kernel corresponds to C - 1 addition operations.
+    Each kernel corresponds to `C - 1` addition operations.
         Therefore , total number of addition operations for a given
-        rectangle : R * (C - 1)
+        rectangle : `R * (C - 1)`
 
-        When this rectangle is selected, a common factor corresponding to
-        sum(M(C_j)) multiplications and C - 1 additions is extracted.
+    When this rectangle is selected, a common factor corresponding to
+        `sum(M(C_j))` multiplications and `C - 1` additions is extracted.
 
-        This common factor is multiplied by each row, which leads to a
-        further sum(M(R_i)) + R multiplications.
+    This common factor is multiplied by each row, which leads to a
+        further `sum(M(R_i)) + R` multiplications.
 
-        Therefore , the value of the rectangle is calculated as :
+    Therefore , the value of the rectangle is calculated as :
         
         value = m *{(C - 1)*(R + sum(M(R_i)) + (R - 1)*(sum(M(C_j))) + (R - 1)*(C - 1))
         
-        best described as the weighted sum of the
+    best described as the weighted sum of the
         savings in the number of multiplications and additions.
+        
 * **Cube Literal Incidence Matrix(CIM)**
 
     Used in detection of single-cube common sub-expressions.
@@ -197,13 +201,13 @@ The important data structures to be used in this project are :
     The common cube corresponding to the prime rectangle is obtained by finding the minimum value in each column of the rectangle.
 
     Calculating the value of the rectangle :
-    
-         * sum(C[i]) -> Sum of integer powers in the extracted cube `C`.
 
-         * Now, this cube saves sum(C[i]) - 1 multiplications in each
+     * sum(C[i]) -> Sum of integer powers in the extracted cube `C`.
+
+     * Now, this cube saves sum(C[i]) - 1 multiplications in each
            row of the rectangle.
 
-         * Therefore , the value of the rectangle : (R - 1)(sum(C[i]) - 1)
+     * Therefore , the value of the rectangle : (R - 1)(sum(C[i]) - 1)
 
 ### Implementation Details :
 -------------------------
@@ -212,31 +216,31 @@ The pseudocode for the following algorithms can be found in the mentioned paper 
 
  * **Kernelling Algorithm : Generate set of kernels and corresponding co-kernels.**
                           
-                            This is performed to construct the KCM , as mentioned earlier.
+      This is performed to construct the KCM , as mentioned earlier.
 
  * **Distill Algorithm : Multiple-Cube decomposition and factorization.**
         
-                       This is a greedy iterative algorithm in which the best prime rectangle is extracted in each iteration :
+      This is a greedy iterative algorithm in which the best prime rectangle is extracted in each iteration :
                        
-                       Outer loop : Kernels and co-kernels are extracted from set of expressions {p_i}, and KCM is formed
+      **Outer loop** : Kernels and co-kernels are extracted from set of expressions {p_i}, and KCM is formed
                                     formed from that using the Kernelling Algorithm.This outer loop exits if there is no favourable
                                     rectangle in the KCM.
                         
-                       Inner loop : Each iteration in the inner loop selects the most valuable rectangle, if present based on the
+      **Inner loop** : Each iteration in the inner loop selects the most valuable rectangle, if present based on the
                                     previously defined value function.
                                     This rectangle is now added to the set of expressions, and we denote this new expression by a 
                                     new literal(symbol in SymPy).
 
  * **Condense Algorithm : Single-Cube decomposition.**
                         
-                        This is done after the Distill algorithm. In a CIM, single-term common subexpressions appear as rectangles
+       This is done after the Distill algorithm. In a CIM, single-term common subexpressions appear as rectangles
                         where the rectangle entries are non-zero integers.
                         
-                        The CIM is updated by subtracting the extracted cube from all rows in the CIM in which it is contained.This 
+       The CIM is updated by subtracting the extracted cube from all rows in the CIM in which it is contained.This 
                         basically extracts the best prime rectangle as decided by the value function described earlier. When no more 
                         favourable rectangles exist the algorithm is done.
                         
-                        After this, a new literal(symbol) is added with the extracted value(this value corresponds to the prime rectangle)
+       After this, a new literal(symbol) is added with the extracted value(this value corresponds to the prime rectangle)
                         to the existing literal set.
 
 #### Phase I : Implementing a robust CSE
